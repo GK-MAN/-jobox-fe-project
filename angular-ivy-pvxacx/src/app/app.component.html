@@ -1,0 +1,91 @@
+<hello name="{{ name }}">K</hello>
+<p>
+  This is your personal Web Application designed by the wonderful Gomolemo Kekana, to aid you into building Contracts on the GO! Let's get started.
+</p>
+
+<div class="container-fluid">
+<form #resumeForm="ngForm">
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="shadow-sm card">
+        <div class="card-body">
+          <h4 class="card-title d-flex align-items-center">Client Details</h4>
+          <div class="row">
+
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label>Client's Full Name:</label>
+                <input type="text" class="form-control" [(ngModel)]="client.FullName" name="FullName" placeholder="Please Enter Client's Full Name"
+                  #FullName="ngModel" required
+                  [ngClass]="{'is-invalid': FullName.invalid && (FullName.touched || resumeForm.submitted) }">
+              </div>
+
+              <div class="form-group">
+                <label>Contract Start Date:</label>
+                <input type="date" class="form-control" [(ngModel)]="client.StartDate" name="StartDate" placeholder="Please Enter Contract Start Date"
+                  #StartDate="ngModel" required
+                  [ngClass]="{'is-invalid': StartDate.invalid && (StartDate.touched || resumeForm.submitted) }">
+              </div>
+
+              <div class="form-group">
+                <label>Contract End Date:</label>
+                <input type="date" class="form-control" [(ngModel)]="client.EndDate" name="EndDate" placeholder="Please Enter Contract End Date"
+                  #EndDate="ngModel" required
+                  [ngClass]="{'is-invalid': EndDate.invalid && (EndDate.touched || resumeForm.submitted) }">
+              </div>
+
+              <div class="form-group">
+                <label>Client's Service Cost:</label>
+                <input type="number" class="form-control" [(ngModel)]="client.ServiceCost" name="ServiceCost" placeholder="Please Enter Client's Service Cost"
+                  #ServiceCost="ngModel" required
+                  [ngClass]="{'is-invalid': ServiceCost.invalid && (ServiceCost.touched || resumeForm.submitted) }">
+              </div>
+
+              <div class="form-group">
+                <label>Client's Service Description:</label>
+                <input type="text" class="form-control" [(ngModel)]="client.ServiceDescription" name="ServiceDescription" placeholder="Please Enter Client's Service Description"
+                  #ServiceDescription="ngModel" required
+                  [ngClass]="{'is-invalid': ServiceDescription.invalid && (ServiceDescription.touched || resumeForm.submitted) }">
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+<br>
+    </div>
+
+     <div class="col-md-4">
+      <div class="shadow-sm card action-buttons">
+        <button (click)="resumeForm.valid ? generatePdf('open') : ''"
+          class="btn btn-secondary d-flex align-items-center justify-content-center mb-1">
+          <i class="material-icons">
+            picture_as_pdf
+          </i> <span>&nbsp;Open PDF</span></button>
+        <button (click)="resumeForm.valid ? generatePdf('download') : ''"
+          class="btn btn-secondary d-flex align-items-center justify-content-center  mb-1">
+          <i class="material-icons">
+            cloud_download
+          </i><span>&nbsp;Download PDF</span></button>
+        <button (click)="resumeForm.valid ? generatePdf('print') : ''"
+          class="btn btn-secondary d-flex align-items-center justify-content-center  mb-1">
+          <i class="material-icons">
+            print
+          </i><span>&nbsp;Print PDF</span></button>
+
+        <button type='reset' (click)="resetForm()"
+          class="btn btn-secondary d-flex align-items-center justify-content-center  mb-1">
+          <i class="material-icons">
+            clear
+          </i><span>&nbsp;Reset</span></button>
+      </div>
+
+      
+    </div>
+  </div>
+</form>
+</div>
